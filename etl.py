@@ -6,7 +6,7 @@ import glob
 
 pasta = 'data'
 
-def extracao_dados(pasta: str) -> pd.DataFrane:
+def extracao_dados(pasta: str) -> pd.DataFrame:
     arquivos_json = glob.glob(os.path.join(pasta, '*.json'))
     df_list = [pd.read_json(arquivo) for arquivo in arquivos_json]
     df_total = pd.concat(df_list, ignore_index=True)
@@ -24,9 +24,9 @@ def calcular_total_de_venda(df: pd.DataFrame) -> pd.DataFrame:
 
 def carregar_dados(df: pd.DataFrame, tipo_arquivo: list):
     for arquivo in tipo_arquivo:
-        if format in tipo_arquivo == 'csv':
+        if arquivo in tipo_arquivo == 'csv':
             df.to_csv("dados.csv", index=False)
-        if format in tipo_arquivo == 'parquet':
+        if arquivo in tipo_arquivo == 'parquet':
             df.to_parquet("dados.parquet", index=False)
 
 def pipeline_calcular_kpi_de_vendas_consolidado(pasta: str, formato_de_saida: list):
