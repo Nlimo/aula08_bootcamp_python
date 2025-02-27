@@ -24,9 +24,9 @@ def calcular_total_de_venda(df: pd.DataFrame) -> pd.DataFrame:
 
 def carregar_dados(df: pd.DataFrame, tipo_arquivo: list):
     for arquivo in tipo_arquivo:
-        if arquivo in tipo_arquivo == 'csv':
+        if arquivo == 'csv':
             df.to_csv("dados.csv", index=False)
-        if arquivo in tipo_arquivo == 'parquet':
+        if arquivo == 'parquet':
             df.to_parquet("dados.parquet", index=False)
 
 def pipeline_calcular_kpi_de_vendas_consolidado(pasta: str, formato_de_saida: list):
